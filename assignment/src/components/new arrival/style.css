@@ -43,10 +43,6 @@ New Arrivals
 {
 	margin-left: 0px;
 }
-.grid_sorting_button:last-child
-{
-
-}
 .grid_sorting_button.active:hover
 {
 	background: #FE7C7F !important;
@@ -312,10 +308,6 @@ New Arrivals
 .grid_sorting_button:first-child
 {
 	margin-left: 0px;
-}
-.grid_sorting_button:last-child
-{
-
 }
 .grid_sorting_button.active:hover
 {
