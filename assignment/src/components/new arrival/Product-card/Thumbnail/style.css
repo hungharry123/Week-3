@@ -1,8 +1,10 @@
 .product_image
 {
-	width: 100%;
+	width:100%;
+	max-width: 100px; 
 }
 .product_image img
 {
-	width: 100%;
+	width: auto;
+	max-width: 100px;
 }
