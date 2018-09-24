@@ -6,7 +6,7 @@ import NewArrivals from './components/new arrival/';
 import Deals from './components/deal of the week/';
 import ShippingInformation from './components/shipping/';
 import Footer from './components/footer/';
-
+import Products from './data/products';
 // import './App.css';
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
         <Header />
         <Banner />
         <CategoriesBar />
-        <NewArrivals />
+        <NewArrivals product={Products} />
         <Deals />
         <ShippingInformation />
         <Footer />

@@ -1,0 +1,25 @@
+
+.product_bubble_right
+{
+	right: 15px;
+}
+.product_bubble_right::after
+{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 10px;
+	right: auto;
+	top: auto;
+	bottom: -6px;
+	border: 6px solid;
+}
+.product_bubble_right::after
+{
+	border-color: transparent transparent transparent #fe4c50;
+}
+.product_bubble_red
+{
+	background: #fe4c50;
+}
