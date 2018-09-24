@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Header from './components/header/'
-import Banner from './components/hero banner/';
-import CategoriesBar from './components/categories bar/';
-import NewArrivals from './components/new arrival/';
-import Deals from './components/deal of the week/';
-import ShippingInformation from './components/shipping/';
-import Footer from './components/footer/';
+import Header from './components/Header/'
+import Banner from './components/HeroBanner/';
+import CategoriesBar from './components/CategoriesBar/';
+import NewArrivals from './components/NewArrivals/';
+import Deals from './components/Deals/';
+import ShippingInformation from './components/Shipping/';
+import Footer from './components/Footer/';
 import Products from './data/products';
 // import './App.css';
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Product from './products/product';
-import './style.css';
+import './NewArrivals.css';
 
 export default class NewArrivals extends Component {
   render() {

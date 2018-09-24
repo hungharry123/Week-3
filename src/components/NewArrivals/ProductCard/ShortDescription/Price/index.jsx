@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.css'
+import './Price.css'
 
 export default class Price extends Component {
   render() {

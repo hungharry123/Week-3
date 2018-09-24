@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './style.css';
+import './Deals.css';
 
 export default class Deals extends Component {
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './style.css';
+import './Shipping.css';
 
 export default class ShippingInformation extends Component {
   render() {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import TopNav from './top/';
-import MainNav from './main/';
+import TopNav from './Top/';
+import MainNav from './Main/';
 
-import './style.css';
+import './Header.css';
 
 export default class Header extends Component {
   render() {

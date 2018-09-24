@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.css';
+import './Thumnail.css';
 
 export default class Thumbnail extends Component {
 
