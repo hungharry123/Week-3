@@ -10,26 +10,25 @@ import './products.css'
 class Product extends Component {
 
   render() {
-    const product = this.props.product;
-    const item = product.item;
-    const _productItem = "product-item " + item;
+    const { product } = this.props;
+    const images = `assets/${product.image}`
+    const _productItem = "product-item ";
+    const _product = "product";
 
     return (
-      // <div className="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
       <div className={_productItem}>
-        <div className={product.discount}>
-          <Thumbnail picture={product.picture} />
+        <div className={_product}>
+          <Thumbnail images={images} image={product.image} />
           <div className={product.favorite} />
-          <SaleOff sale={product.sale} />
+          <SaleOff price={product.salePrice} ori_price={product.originalPrice} />
           <_New _new={product._new} />
           <div className="product_info">
             <Name name={product.name} />
-            <Price price={product.price} ori_price={product.ori_price} />
+            <Price price={product.salePrice} ori_price={product.originalPrice} />
           </div>
         </div>
         <AddToCard />
       </div>
-      // </div>
     )
   }
 }

@@ -4,10 +4,11 @@ import './Thumnail.css';
 export default class Thumbnail extends Component {
 
   render() {
-    const picture = this.props.picture;
+    const images = this.props.images;
+    const image = this.props.image;
     return (
       <div className="product_image">
-        <img src={picture} alt="" />
+        <img src={images} alt={image} />
       </div>
 
     );
