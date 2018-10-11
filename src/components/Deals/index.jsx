@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import './Deals.css';
+import './Deals.css'
 
 export default class Deals extends Component {
   render() {
@@ -42,6 +42,6 @@ export default class Deals extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
