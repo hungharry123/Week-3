@@ -28,7 +28,7 @@ export default class GalleryProductDetail extends PureComponent {
     const { gallery } = this.props
     const { currentImage, active } = this.state
 
-    if (gallery.length == 0) {
+    if (gallery.length === 0) {
       return null
     }
 

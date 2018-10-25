@@ -6,7 +6,7 @@ export default class AddToCart extends PureComponent {
   onClick = (e) => {
     e.preventDefault()
     const { addToCart } = this.props
-    if (typeof addToCart == "function") {
+    if (typeof addToCart === "function") {
       addToCart()
     }
   }

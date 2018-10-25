@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 
-import Header from '../../components/Header'
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb'
 import GalleryProductDetail from '../../components/GalleryProductDetail/GalleryProductDetail'
 import ProductInformation from '../../components/ProductInformation/ProductInformation'
@@ -10,7 +9,6 @@ import ProductDetailDescription from '../../components/ProductDetailDescription/
 import AdditionlInformation from '../../components/AdditionlInformation/AdditionlInformation'
 import Reviews from '../../components/Reviews/Reviews'
 import ShippingInformation from '../../components/Shipping/'
-import Footer from '../../components/Footer/'
 
 import ProductDetail from '../../data/productDetail'
 
@@ -59,7 +57,6 @@ export default class HomePage extends Component {
     return (
 
       <div>
-        <Header />
         <div className="container product_section_container">
           <div className="row" style={{ marginTop: 150 }}>
             <div className="col product_section clearfix">
@@ -83,7 +80,6 @@ export default class HomePage extends Component {
           <Tabs tabs={tabs} active="des" />
         </div>
         <ShippingInformation />
-        <Footer />
       </div>
     )
   }

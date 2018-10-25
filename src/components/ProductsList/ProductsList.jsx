@@ -1,14 +1,17 @@
 import React, { PureComponent } from "react"
+import { connect } from "react-redux"
+
 import PropTypes from 'prop-types'
 import ProductCard from '../ProductCard/ProductCard'
 import './ProductsList.css'
 
-export default class ProductsList extends PureComponent {
+class ProductsList extends PureComponent {
   render() {
+    var props = this.props
     return (
       <div className="row">
         <div className="col products-list">
-          {this.props.productsList.map(product => <ProductCard key={product.id} product={product} />)}
+          {props.productsList.map(product => <ProductCard key={product.id} product={product} />)}
         </div>
       </div>
     )
@@ -22,3 +25,11 @@ ProductCard.propTypes = {
 ProductCard.defaultProps = {
   productsList: [],
 }
+
+var mapStateToProps = state => ({
+  productsList: state.products.filteredItems,
+});
+
+var mapDispatchToProps = null
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsList)

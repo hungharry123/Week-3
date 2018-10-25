@@ -1,15 +1,12 @@
-import _ from 'lodash';
+import _ from 'lodash'
 
 export default {
-  filterProducts(products, category) {
-    if (!category) {
-      if (typeof (category) === 'object') {
-        return _.filter(products, { "categoryId": category.id });
-      } else {
-        return _.filter(products, { "categoryId": category });
-      }
+  filterProductByCategory(products, categoryId) {
+    if (!categoryId) {
+      return null
     }
+    const filteredProducts = categoryId === 'all' ? products : _.filter(products, { categoryId: categoryId })
 
-    return [];
+    return filteredProducts
   }
 }

@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 /*-------------------------------*/
-import Header from '../../components/Header'
+
 import Shipping from '../../components/Shipping'
-import Footer from '../../components/Footer'
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb'
 import ProductCategories from '../../components/ProductCategories/ProductCategories'
 import FilterBySizeAndColor from '../../components/FilterBySizeAndColor/FilterBySizeAndColor'
@@ -73,8 +72,6 @@ export default class CategoryPage extends Component {
   render() {
     return (
       <div>
-        <Header />
-
         <div className="container product_section_container">
           <div className="row" style={{ marginTop: 150 }}>
             <div className="col product_section clearfix">
@@ -104,7 +101,6 @@ export default class CategoryPage extends Component {
         </div>
 
         <Shipping />
-        <Footer />
       </div >
     )
   }

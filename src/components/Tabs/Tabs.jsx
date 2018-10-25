@@ -1,37 +1,37 @@
-import React, { PureComponent } from 'react';
-import './Tabs.css';
+import React, { PureComponent } from 'react'
+import './Tabs.css'
 
 class Tabs extends PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       active: props.active
     }
 
     this.onClick = (key, e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.setState({
         active: key
-      });
-      console.log(key);
+      })
+      console.log(key)
     }
   }
   render() {
-    const { tabs } = this.props;
-    const { active } = this.state;
-    if (tabs.length == 0) {
-      return null;
+    const { tabs } = this.props
+    const { active } = this.state
+    if (tabs.length === 0) {
+      return null
     }
-    let tabMenu = [];
-    let tabContent = null;
+    let tabMenu = []
+    let tabContent = null
     tabs.forEach(tab => {
-      tabMenu.push(<li key={tab.key} className={tab.key === active ? 'tab active' : 'tab'}><a href="#" onClick={(e) => this.onClick(tab.key, e)} >{tab.name}</a></li>);
+      tabMenu.push(<li key={tab.key} className={tab.key === active ? 'tab active' : 'tab'}><a href="#" onClick={(e) => this.onClick(tab.key, e)} >{tab.name}</a></li>)
 
       if (tab.key === active) {
-        tabContent = <div className={tab.key === active ? 'tab_container active' : 'tab_container'}>{tab.content}</div>;
+        tabContent = <div className={tab.key === active ? 'tab_container active' : 'tab_container'}>{tab.content}</div>
       }
-    });
+    })
     return (
       <div className="tabs_section_container">
         <div className="container">
@@ -51,8 +51,8 @@ class Tabs extends PureComponent {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Tabs;
+export default Tabs
