@@ -9,8 +9,8 @@ export default class ProductInformation extends PureComponent {
     super(props)
     this.state = {
       isFavorite: false,
-      items: 0
-    }
+      quantity: 1,
+    };
 
     this.changeFavorite = this.changeFavorite.bind(this)
     this.onClickAddProduct = this.onClickAddProduct.bind(this)
@@ -19,7 +19,7 @@ export default class ProductInformation extends PureComponent {
 
   updateQuantity = (number) => {
     this.setState({
-      items: number
+      quantity: number
     })
   }
 
@@ -34,7 +34,7 @@ export default class ProductInformation extends PureComponent {
     if (!product) return
     const { onAddProduct } = this.props
     if (onAddProduct) {
-      onAddProduct(product, this.state.items)
+      onAddProduct(product, this.state.quantity)
     }
   }
 
@@ -113,7 +113,10 @@ export default class ProductInformation extends PureComponent {
         <div className="quantity d-flex flex-column flex-sm-row align-items-sm-center">
 
           <span>Quantity:</span>
-          <ProductQuantity afterChange={(number) => this.updateQuantity(number)} />
+          <ProductQuantity
+            value={this.state.quantity}  
+            afterChange={(number) => this.updateQuantity(number)} 
+          />
           {this.renderAddToCard(product)}
 
           <div className={`${staticClass} ${this.state.isFavorite ? 'active' : ''}`}

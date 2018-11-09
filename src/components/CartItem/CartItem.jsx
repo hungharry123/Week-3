@@ -7,6 +7,11 @@ export default class CartItem extends Component {
   constructor(props) {
     super(props)
 
+    // console.log('Product: ', props.item);
+    // this.state = {
+    //   quantity: props.item.amount,
+    // };
+    
     // this.changeQuanlity = this.changeQuanlity.bind(this)
     this.updateQuantity = this.updateQuantity.bind(this)
     this.onClickRemove = this.onClickRemove.bind(this)
@@ -15,9 +20,10 @@ export default class CartItem extends Component {
   updateQuantity = (number) => {
     const { onUpdateAmount } = this.props
     if (onUpdateAmount) {
-      onUpdateAmount(this.props.item.product, +value)
+      onUpdateAmount(this.props.item.product, number)
     }
-  }
+  };
+  
   onClickRemove(productId) {
     if (!productId) return
 
@@ -28,7 +34,9 @@ export default class CartItem extends Component {
   }
 
   render() {
-    const { product, amount } = this.props.item
+    const { product } = this.props.item;
+    
+    
     return (
       <tr>
         <td>
@@ -39,7 +47,10 @@ export default class CartItem extends Component {
           <h5>Price: $ {product.salePrice}</h5>
         </td>
         <td>
-          <ProductQuantity afterChange={(number) => this.updateQuantity(number)} />
+          <ProductQuantity 
+            value={this.props.item.amount}
+            afterChange={this.updateQuantity} 
+          />
         </td>
         <td>
           <button onClick={() => this.onClickRemove(product.id)} className="btn btn-remove btn-danger">Remove</button>
