@@ -9,34 +9,40 @@ const initialState = {
   items: [],
   total: 0,
   totalPrice: 0
-}
+};
 
 const CartReducers = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
-      const items = state.items
-      let total = state.total
-      const { product, amount } = action.payload
+      const items = state.items;
+      let total = state.total;
+      
+      const { product, amount } = action.payload;
       const idx = _.findIndex(items, (item) => {
         return item.product.id === product.id
-      })
+      });
 
       if (idx === -1) {
         items.push({
           product,
-          amount: +amount
+          amount: amount
         })
       } else {
-        items[idx].amount += +amount
+        items[idx].amount = amount;
+        
         if (items[idx].amount <= 0) {
           items.splice(idx, 1)
         }
       }
+      
+      // re-calculate total price
+      const totalPrice = items.reduce((acc, cur) => acc + cur.amount * cur.product.salePrice, 0);
+      const itemsCount = items.reduce((acc, cur) => acc + cur.amount, 0);
 
       return {
         items,
-        total: total + +amount,
-        totalPrice: state.totalPrice + product.salePrice * +amount
+        totalPrice,
+        total: itemsCount,
       }
     }
 

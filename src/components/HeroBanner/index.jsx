@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import './HeroBanner.css';
 
 const styles = {
-  "background-image": "url(assets/images/slider_1.jpg)"
-}
+  backgroundImage: "url(assets/images/slider_1.jpg)"
+};
 
 export default class Banner extends Component {
   render() {

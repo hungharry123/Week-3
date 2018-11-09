@@ -38,12 +38,12 @@ export default class GalleryProductDetail extends PureComponent {
                 {
                   gallery.map((imageUrl) => {
                     return (
-                      <li className={imageUrl === this.state.currentImage ? 'acctive' : ''} key={imageUrl}>
+                      <li className={imageUrl === this.state.currentImage ? 'active' : ''} key={imageUrl}>
                         <a href="#" onClick={(e) => {
                           this.onClick(imageUrl)
                         }
                         }>
-                          <img src={imageUrl} alt />
+                          <img src={imageUrl} alt="Something" />
                         </a>
                       </li>
                     )
