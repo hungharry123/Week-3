@@ -1,39 +1,18 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { filterProducts } from '../../store/actions/Products/products'
-
-class CategoryOptions extends Component {
+export default class CategoryOptions extends Component {
   constructor(props) {
     super(props)
-
-    const categories = props.categories
-    const defaultCategoryId = categories[0].id
-    this.state = {
-      selectedCategoryId: categories.length > 0
-        ? (
-          (
-            defaultCategoryId
-            && categories.findIndex(x => x.id === defaultCategoryId) >= 0
-            && defaultCategoryId
-          )
-          || categories[0].id)
-        : '',
-    }
-
     this.handleItemClick = this.handleItemClick.bind(this)
   }
 
   handleItemClick(category) {
-    console.log('category click in', category.id)
-    this.setState(
-      {
-        selectedCategoryId: category.id
-      })
-
-    this.props.dispatch(filterProducts(category.id))
-
+    const { onSelectedCategoryChanged } = this.props;
+    if (onSelectedCategoryChanged) {
+      onSelectedCategoryChanged(category);
+    }
   }
 
   render() {
@@ -48,7 +27,7 @@ class CategoryOptions extends Component {
                   <li
                     key={category.id}
                     className={
-                      `${itemStaticClasses} ${category.id === this.state.selectedCategoryId
+                      `${itemStaticClasses} ${category.id === this.props.selectedCategoryId
                         ? 'active is-checked' : ''}}`
                     }
                     onClick={() => this.handleItemClick(category)}
@@ -68,26 +47,10 @@ class CategoryOptions extends Component {
 
 CategoryOptions.propTypes = {
   categories: PropTypes.array.isRequired,
-  defaultCategoryId: PropTypes.string,
+  selectedCategoryId: PropTypes.string.isRequired,
   onSelectedOptionChanged: PropTypes.func,
 }
 
 CategoryOptions.defaultProps = {
-  defaultCategoryId: '',
   onSelectedOptionChanged: null,
 }
-
-function mapStateToProps(state) {
-  console.log('categories', state.categories.items)
-  return {
-    categories: state.categories.items,
-  }
-}
-// var mapStateToProps = state => ({
-//   categories: state.categories.items,
-// })
-
-// var mapDispatchToProps = null
-
-
-export default connect(mapStateToProps)(CategoryOptions)

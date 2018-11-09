@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
+import { connect } from "react-redux"
 
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb'
 import GalleryProductDetail from '../../components/GalleryProductDetail/GalleryProductDetail'
@@ -10,77 +11,99 @@ import AdditionlInformation from '../../components/AdditionlInformation/Addition
 import Reviews from '../../components/Reviews/Reviews'
 import ShippingInformation from '../../components/Shipping/'
 
-import ProductDetail from '../../data/productDetail'
+// import ProductDetail from '../../data/productDetail'
+
+import { fetchAProduct } from '../../store/actions/Products/products'
+import { addToCart } from '../../store/actions/Carts/carts'
 
 import './ProductDetail.css'
 
-export default class HomePage extends Component {
-  state = {
-    product: {}
+class ProductDetailPage extends Component {
+  constructor(props) {
+    super(props)
+    this.onAddProduct = this.onAddProduct.bind(this)
   }
 
   componentDidMount() {
-    this.updateProduct()
+    const id = this.props.match.params.id
+    this.props.dispatch(fetchAProduct(id))
 
   }
-  updateProduct() {
-    ProductDetail.product(1, (data) => {
-      this.setState({
-        product: data
-      })
-    });
+
+  onAddProduct(product, amount) {
+    if (!product || !amount) return
+    this.props.dispatch(addToCart(product, amount))
   }
 
   render() {
-    const { onUpdateCart } = this.props
-    const { product } = this.state
-    const gallery = product.gallery || []
-    const tabs = [
-      {
-        key: 'des',
-        name: 'Description',
-        content: <ProductDetailDescription {...product.description} />
-      },
-      {
-        key: 'addition',
-        name: 'Additional Information',
-        content: <AdditionlInformation><p>COLOR:<span>Gold, Red</span></p>
-          <p>SIZE:<span>L,M,XL</span></p></AdditionlInformation>
-      },
-      {
-        key: 'reviews',
-        name: 'Reviews (2)',
-        content: <Reviews />
-      }
-    ]
+    const { product } = this.props
 
-    return (
+    if (product) {
+      const gallery = product.images || []
 
-      <div>
-        <div className="container product_section_container">
-          <div className="row" style={{ marginTop: 150 }}>
-            <div className="col product_section clearfix">
-              <Breadcrumb />
+      const tabs = [
+        {
+          key: 'des',
+          name: 'Description',
+          content: <ProductDetailDescription {...product.shortDescription} />
+        },
+        {
+          key: 'addition',
+          name: 'Additional Information',
+          content: <AdditionlInformation><p>COLOR:<span>Gold, Red</span></p>
+            <p>SIZE:<span>L,M,XL</span></p></AdditionlInformation>
+        },
+        {
+          key: 'reviews',
+          name: 'Reviews (2)',
+          content: <Reviews />
+        }
+      ]
+
+      return (
+
+        <div>
+          <div className="container product_section_container">
+            <div className="row" style={{ marginTop: 150 }}>
+              <div className="col product_section clearfix">
+                <Breadcrumb />
+              </div>
             </div>
+            <div className="row">
+              <div className="col-lg-7">
+                {
+                  gallery.length > 0 &&
+                  <GalleryProductDetail gallery={gallery} />
+                }
+
+              </div>
+              <div className="col-lg-5">
+                {
+                  product &&
+                  <ProductInformation
+                    product={product}
+                    onAddProduct={this.onAddProduct}
+                  />
+                }
+
+              </div>
+            </div>
+            <Tabs
+              tabs={tabs}
+              active="des"
+            />
           </div>
-          <div className="row">
-            <div className="col-lg-7">
-              {gallery.length > 0 && <GalleryProductDetail gallery={gallery} />}
-            </div>
-            <div className="col-lg-5">
-              <ProductInformation
-                salePrice={product.salePrice}
-                originalPrice={product.originalPrice}
-                title={product.name}
-                description={product.shortDescription}
-                onUpdateCart={onUpdateCart}
-              />
-            </div>
-          </div>
-          <Tabs tabs={tabs} active="des" />
+          <ShippingInformation />
         </div>
-        <ShippingInformation />
-      </div>
-    )
+      )
+
+    }
+    return (<div></div>)
   }
 }
+
+const mapStateToProps = state => ({
+  product: state.products.item,
+})
+
+export default connect(mapStateToProps)(ProductDetailPage)

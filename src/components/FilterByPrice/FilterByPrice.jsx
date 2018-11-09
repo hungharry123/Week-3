@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import RangeSlider from '../FormControls/RangeSlider/RangeSlider';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import RangeSlider from '../FormControls/RangeSlider/RangeSlider'
+import PropTypes from 'prop-types'
 
 class FilterByPrice extends Component {
   constructor(props) {
-    super(props);
-    this.handleRangeChange = this.handleRangeChange.bind(this);
-    this.handleFilterClick = this.handleFilterClick.bind(this);
+    super(props)
+    this.handleRangeChange = this.handleRangeChange.bind(this)
+    this.handleFilterClick = this.handleFilterClick.bind(this)
 
     this.state = {
       currentPriceRange: this.props.defaultRange,
@@ -14,19 +14,19 @@ class FilterByPrice extends Component {
   }
 
   handleRangeChange(newRange) {
-    this.setState({ currentPriceRange: newRange });
+    this.setState({ currentPriceRange: newRange })
   }
 
   handleFilterClick() {
-    const { onRangeChange } = this.props;
+    const { onRangeChange } = this.props
     if (onRangeChange) {
-      onRangeChange(this.state.currentPriceRange);
+      onRangeChange(this.state.currentPriceRange)
     }
   }
 
   render() {
-    const { currentPriceRange } = this.state;
-    const { defaultRange, max } = this.props;
+    const { currentPriceRange } = this.state
+    const { defaultRange, max } = this.props
 
     return (
       <div className="sidebar_section">
@@ -44,9 +44,14 @@ class FilterByPrice extends Component {
           onChange={this.handleRangeChange}
         />
 
-        <div className="filter_button" onClick={this.handleFilterClick}><span>filter</span></div>
+        <div
+          className="filter_button"
+          onClick={this.handleFilterClick}
+        >
+          <span>filter</span>
+        </div>
       </div>
-    );
+    )
   }
 }
 
@@ -55,13 +60,13 @@ FilterByPrice.propTypes = {
   max: PropTypes.number,
   defaultRange: PropTypes.array,
   onRangeChange: PropTypes.func,
-};
+}
 
 FilterByPrice.defaultProps = {
   min: 0,
   max: 100,
-  defaultRange: [0, 30],
+  defaultRange: [0, 590],
   onRangeChange: null,
-};
+}
 
-export default FilterByPrice;
+export default FilterByPrice

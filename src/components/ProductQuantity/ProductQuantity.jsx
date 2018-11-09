@@ -46,14 +46,11 @@ export default class ProductQuantity extends PureComponent {
     const { quantity } = this.state
 
     return (
-      <Fragment>
-        <span>Quantity:</span>
         <div className="quantity_selector">
           <a href="#" onClick={(e) => this.minus(e)} className="minus"><i className="fa fa-minus" aria-hidden="true" /></a>
           <span id="quantity_value">{quantity}</span>
           <a href="#" onClick={(e) => this.plus(e)} className="plus"><i className="fa fa-plus" aria-hidden="true" /></a>
         </div>
-      </ Fragment>
     )
   }
 }

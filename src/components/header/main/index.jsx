@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import './Main.css';
+import './Main.css'
 
-export default class MainNavigation extends Component {
+class MainNavigation extends Component {
   render() {
     return (
       <div className="main_nav_container">
@@ -23,10 +24,10 @@ export default class MainNavigation extends Component {
                 </ul>
                 <ul className="navbar_user">
                   <li className="checkout">
-                    <a href="#">
+                    <Link to="/cart">
                       <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                      <span id="checkout_items" className="checkout_items">2</span>
-                    </a>
+                      <span id="checkout_items" className="checkout_items">{this.props.cartTotal}</span>
+                    </Link>
                   </li>
                 </ul>
                 <div className="hamburger_container">
@@ -37,6 +38,12 @@ export default class MainNavigation extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
+
+const mapStateToProps = state => ({
+  cartTotal: state.cart.total
+})
+
+export default withRouter(connect(mapStateToProps)(MainNavigation))

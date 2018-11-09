@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React, { Component } from "react"
 import PropTypes from 'prop-types'
 
 import './ProductCard.css'
@@ -11,22 +11,42 @@ export default class ProductCard extends Component {
       isFavorite: false,
     }
     this.handleFavoriteIconClicked = this.handleFavoriteIconClicked.bind(this)
+    this.clickOnProduct = this.clickOnProduct.bind(this)
+    this.onClickAddProduct = this.onClickAddProduct.bind(this)
   }
 
   handleFavoriteIconClicked() {
-    this.setState(prevState => ({isFavorite: !prevState}))
+    this.setState(prevState => ({ isFavorite: !prevState }))
+  }
+
+  clickOnProduct(id) {
+    if (!id) return
+
+    const { clickOnProduct } = this.props
+    if (clickOnProduct) {
+      clickOnProduct(id)
+    }
+  }
+
+  onClickAddProduct(product) {
+    if (!product) return
+
+    const { onClickAddProduct } = this.props
+    if (onClickAddProduct) {
+      onClickAddProduct(product)
+    }
   }
 
   render() {
-    const {product} = this.props
+    const { product } = this.props
     const isSale = product.salePrice < product.originalPrice
     const originalPrice = isSale && <span>${product.originalPrice}</span>
 
     return (
       <div className="product-item">
-        <div className="product">
+        <div className="product" onClick={() => this.clickOnProduct(product.id)}>
           <div className="product_image">
-            <img src={`assets/${product.image}`} alt={product.name} />
+            <img src={product.image} alt={product.name} />
           </div>
 
           <div className={`favorite favorite_left ${this.state.isFavorite ? 'active' : ''}`} />
@@ -46,8 +66,11 @@ export default class ProductCard extends Component {
           </div>
         </div>
 
-        <div className="red_button add_to_cart_button">
-          <a href="#">add to cart</a>
+        <div
+          className="red_button add_to_cart_button"
+          onClick={() => this.onClickAddProduct(product)}
+        >
+          add to cart
         </div>
       </div>
     )

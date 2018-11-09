@@ -19,15 +19,15 @@ export default class TopFilter extends Component {
     this.sortByOptions = [
       {
         text: 'Default sorting',
-        value: 'id',
+        value: null
       },
       {
         text: 'Price',
-        value: 'salePrice',
+        value: 'salePrice DESC'
       },
       {
         text: 'Product name',
-        value: 'name',
+        value: 'name ASC'
       }
     ]
 
@@ -49,7 +49,6 @@ export default class TopFilter extends Component {
 
   handleSortByChange(sortBy) {
     this.setState({ selectedSortBy: sortBy })
-
     const { onSortByChange } = this.props
     if (onSortByChange) {
       onSortByChange(sortBy.value)
@@ -107,22 +106,6 @@ export default class TopFilter extends Component {
           {this.renderSortByList()}
           {this.renderPageSizeList()}
         </ul>
-
-        <div className="pages d-flex flex-row align-items-center">
-          <div className="page_current">
-            <span>1</span>
-            <ul className="page_selection">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-            </ul>
-          </div>
-
-          <div className="page_total"><span>of</span> 3</div>
-          <div id="next_page" className="page_next">
-            <a href="#"><i className="fa fa-long-arrow-right" aria-hidden="true" /></a>
-          </div>
-        </div>
       </div>
     )
   }

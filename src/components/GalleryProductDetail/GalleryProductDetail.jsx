@@ -9,16 +9,13 @@ export default class GalleryProductDetail extends PureComponent {
     const currentImage = gallery.length > 0 ? gallery[0] : {}
 
     this.state = {
-      active: 0,
       currentImage
     }
 
-    this.onClick = (image, active, e) => {
-      e.preventDefault()
-      console.log(image)
+    this.onClick = (imageUrl) => {
+      console.log(imageUrl)
       this.setState({
-        currentImage: image,
-        active
+        currentImage: imageUrl,
       })
     }
   }
@@ -26,7 +23,7 @@ export default class GalleryProductDetail extends PureComponent {
 
   render() {
     const { gallery } = this.props
-    const { currentImage, active } = this.state
+    const { currentImage } = this.state
 
     if (gallery.length === 0) {
       return null
@@ -39,15 +36,14 @@ export default class GalleryProductDetail extends PureComponent {
             <div className="single_product_thumbnails">
               <ul>
                 {
-                  gallery.map((value, index) => {
+                  gallery.map((imageUrl) => {
                     return (
-                      <li className={index === active ? 'acctive' : ''} key={index}>
+                      <li className={imageUrl === this.state.currentImage ? 'acctive' : ''} key={imageUrl}>
                         <a href="#" onClick={(e) => {
-                          this.onClick(value, index, e)
-                          // console.log('test')
+                          this.onClick(imageUrl)
                         }
                         }>
-                          <img src={value.thumbnail} alt />
+                          <img src={imageUrl} alt />
                         </a>
                       </li>
                     )
@@ -61,7 +57,7 @@ export default class GalleryProductDetail extends PureComponent {
               <div
                 className="single_product_image_background"
                 style={{
-                  backgroundImage: `url(${currentImage.imageFull})`
+                  backgroundImage: `url(${currentImage})`
                 }} />
             </div>
           </div>
