@@ -77,7 +77,7 @@ class NewArrivals extends PureComponent {
           <div className="row">
             <div className="col text-center">
               <div className="section_title new_arrivals_title">
-                <h2>New Arrivals</h2>
+                <h2>Mặt hàng mới</h2>
               </div>
             </div>
           </div>

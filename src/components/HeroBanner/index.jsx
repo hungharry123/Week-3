@@ -14,9 +14,9 @@ export default class Banner extends Component {
           <div className="row align-items-center fill_height">
             <div className="col">
               <div className="main_slider_content">
-                <h6>Spring / Summer Collection 2017</h6>
-                <h1>Get up to 30% Off New Arrivals</h1>
-                <div className="red_button shop_now_button"><a href="#">shop now</a></div>
+                <h6>Thời trang xuân hè 2019</h6>
+                <h1>Giảm giá 30% cho các mặt hàng mới</h1>
+                <div className="red_button shop_now_button"><a href="#">Mua ngay</a></div>
               </div>
             </div>
           </div>

@@ -12,15 +12,15 @@ class MainNavigation extends Component {
           <div className="row">
             <div className="col-lg-12 text-right">
               <div className="logo_container">
-                <Link to="/">Nordic<span>Shop</span></Link>
+                <Link to="/">The Hung <span>Shop</span></Link>
               </div>
               <nav className="navbar">
                 <ul className="navbar_menu">
-                  <li><Link to="/">home</Link></li>
-                  <li><Link to="/categories">shop</Link></li>
-                  <li><a href="#">promotion</a></li>
-                  <li><a href="https://nordiccoder.com/blog" target="blank">blog</a></li>
-                  <li><a href="#">contact</a></li>
+                  <li><Link to="/">Trang chủ</Link></li>
+                  <li><Link to="/categories">Mặt hàng</Link></li>
+                  {/* <li><a href="#">promotion</a></li> */}
+                  {/* <li><a href="https://nordiccoder.com/blog" target="blank">blog</a></li> */}
+                  {/* <li><a href="#">contact</a></li> */}
                 </ul>
                 <ul className="navbar_user">
                   <li className="checkout">

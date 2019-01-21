@@ -46,7 +46,11 @@ export default class BottomFilters extends Component {
         <i className="fa fa-angle-down" />
         <ul className="sorting_num">
           {this.pageSizeOptions.map(pageSize => (
-            <li key={pageSize.value} className="num_sorting_btn" onClick={() => this.handlePageSizeChange(pageSize)}>
+            <li
+              key={pageSize.value}
+              className="num_sorting_btn"
+              onClick={() => this.handlePageSizeChange(pageSize)}
+            >
               <span>{pageSize.text}</span>
             </li>
           ))}

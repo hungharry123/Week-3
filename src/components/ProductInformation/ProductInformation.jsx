@@ -50,7 +50,7 @@ export default class ProductInformation extends PureComponent {
   renderDelivery() {
     return (
       <div className="free_delivery d-flex flex-row align-items-center justify-content-center">
-        <span className="ti-truck" /><span>free delivery</span>
+        <span className="ti-truck" /><span>Miễn phí vận chuyển</span>
       </div>
     )
   }
